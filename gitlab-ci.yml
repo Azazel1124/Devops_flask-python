@@ -1,0 +1,31 @@
+stages:
+  - lint
+  - test
+  - docker
+
+lint:
+  stage: lint
+  image: python:3.11
+  script:
+    - pip install flake8
+    - flake8 my_flask.py
+
+test:
+  stage: test
+  image: python:3.11
+  script:
+    - pip install -r requirements.txt
+    - chmod +x run_tests.sh
+    - ./run_tests.sh
+
+docker_build:
+  stage: docker
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker-compose build
+    - docker-compose up -d
+    # Можно добавить проверки, что контейнеры запустились
+  only:
+    - main
