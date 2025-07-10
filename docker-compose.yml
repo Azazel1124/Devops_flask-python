@@ -1,0 +1,58 @@
+services:
+  db:
+    image: docker.io/library/postgres:15
+    environment:
+      POSTGRES_DB: project1_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Qaszplkm1
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  flask-app:
+    build: .
+    command: python my_flask.py
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: project1_db
+      DB_USER: postgres
+      DB_PASSWORD: Qaszplkm1
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    hostname: 'localhost'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:8929'
+    ports:
+      - "8929:8929"     # Веб-интерфейс GitLab
+      - "2222:22"       # SSH (чтобы не конфликтовать с хост-машиной)
+    volumes:
+      - ./gitlab/config:/etc/gitlab
+      - ./gitlab/logs:/var/log/gitlab
+      - ./gitlab/data:/var/opt/gitlab
+    shm_size: '256m'
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  gitlab_data:
+    driver_opts:
+      type: none
+      device: ./gitlab/data
+      o: bind
+
+networks:
+  app-network:
+    
+      
