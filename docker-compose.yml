@@ -34,8 +34,8 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://localhost:8929'
     ports:
-      - "8929:8929"     # Веб-интерфейс GitLab
-      - "2222:22"       # SSH (чтобы не конфликтовать с хост-машиной)
+      - "8929:8929"     
+      - "2222:22"       
     volumes:
       - ./gitlab/config:/etc/gitlab
       - ./gitlab/logs:/var/log/gitlab
