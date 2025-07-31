@@ -127,7 +127,7 @@
 
 ## Контакты
 
-tg: @CestMort
+Tg: @CestMort
 
 ---
 
