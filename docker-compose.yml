@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_DB: project1_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Qaszplkm1
+      POSTGRES_PASSWORD: 
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -19,7 +19,7 @@ services:
       DB_HOST: db
       DB_NAME: project1_db
       DB_USER: postgres
-      DB_PASSWORD: Qaszplkm1
+      DB_PASSWORD: 
     ports:
       - "5000:5000"
     networks:
