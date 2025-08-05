@@ -27,7 +27,7 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone https://github.com/Wonka1124/Devops_flask-python
+   git clone https://github.com/Azazel1124/Devops_flask-python
    cd Devops_flask-python-main
    ```
 2. **Проверьте переменные окружения:**
