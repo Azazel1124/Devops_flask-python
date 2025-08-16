@@ -61,8 +61,8 @@ env:
   DB_HOST: "db"
   DB_NAME: "project1_db"
   DB_USER: "postgres"
-  DB_PASSWORD: "Qaszplkm1"
-  SECRET_KEY: "Qaszplkm1"
+  DB_PASSWORD: "yourpass"
+  SECRET_KEY: "yourkey"
 ```
 
 ---
